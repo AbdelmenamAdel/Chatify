@@ -13,11 +13,40 @@ dependencies:
   flutter_screenutil: ^5.9.0
   flutter_bloc: ^8.1.3
   firebase_core: ^2.24.2
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
+  firebase_auth: ^4.16.0
+  firebase_storage: ^11.6.0
+  cloud_firestore: ^4.14.0
+  email_auth: ^1.1.1
+  get_it: ^7.6.6
   flutter_test:
     sdk: flutter
+  loading_indicator: ^3.1.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path_ios:  "assets/app_icon.jpg"
+  image_path_android:  "assets/app_icon.jpg"
+  remove_alpha_ios: true
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/app_icon.jpg"
+    background_color: "#979797"
+    theme_color: "#979797"
+  windows:
+    generate: true
+    image_path: "assets/app_icon.jpg"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path:  "assets/app_icon.jpg"
   flutter_lints: ^2.0.0
+  
+
 flutter:
   uses-material-design: true
   assets:

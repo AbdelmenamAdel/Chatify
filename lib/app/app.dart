@@ -1,3 +1,4 @@
+import 'package:chatify/core/routes/routes.dart';
 import 'package:chatify/features/auth/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
       designSize: Size(375, 812),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: LoginScreen(),
+        initialRoute: Routes.login,
+        onGenerateRoute: AppRoutes.generatedRoute,
       ),
     );
   }

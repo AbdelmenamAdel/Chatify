@@ -1,17 +1,32 @@
+import 'package:chatify/core/routes/routes.dart';
 import 'package:chatify/core/utils/assets.dart';
 import 'package:chatify/core/utils/colors.dart';
 import 'package:chatify/core/utils/strings.dart';
+import 'package:chatify/core/widgets/navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    GlobalKey<FormState> formkey = GlobalKey<FormState>();
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
     return Scaffold(
         body: Container(
       height: double.infinity,
@@ -26,7 +41,7 @@ class LoginScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Form(
-            key: formkey,
+            key: _formkey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -37,8 +52,13 @@ class LoginScreen extends StatelessWidget {
                   width: 140.h,
                 ),
                 SizedBox(height: 30.h),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(AppStrings.login,
+                      style: TextStyle(fontSize: 45, color: AppColors.primary)),
+                ),
                 TextFormField(
-                  controller: emailController,
+                  controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     labelText: AppStrings.email,
@@ -51,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(height: 20.h),
                 // Password TextField
                 TextFormField(
-                  controller: passwordController,
+                  controller: _passwordController,
                   obscureText: true,
                   decoration: const InputDecoration(
                     labelText: AppStrings.password,
@@ -82,7 +102,9 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     const Text(AppStrings.dnthaveAcc),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.navigateTo(Routes.signUp);
+                      },
                       child: const Text(
                         AppStrings.signUp,
                         style: TextStyle(color: AppColors.primary),

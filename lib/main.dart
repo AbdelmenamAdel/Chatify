@@ -1,9 +1,15 @@
 import 'package:chatify/app/app.dart';
+import 'package:chatify/core/bloc/bloc_observer.dart';
+import 'package:chatify/core/services/service_locator.dart';
+import 'package:chatify/features/auth/screens/cubit/auth_cubit.dart';
+import 'package:chatify/features/auth/firebase/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restart_app/restart_app.dart';
 
-void main() {
+void main() async {
   ErrorWidget.builder = (FlutterErrorDetails errorDetails) => MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -48,5 +54,18 @@ void main() {
           ),
         ),
       );
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
+  await initServiceLocator();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthCubit>(
+          create: (context) => sl<AuthCubit>(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
