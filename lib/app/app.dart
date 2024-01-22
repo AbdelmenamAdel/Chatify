@@ -9,11 +9,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const ScreenUtilInit(
-      designSize: Size(375, 812),
+    return ScreenUtilInit(
+      designSize: Size(MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.login,
+        initialRoute: Routes.initialRoute,
         onGenerateRoute: AppRoutes.generatedRoute,
       ),
     );

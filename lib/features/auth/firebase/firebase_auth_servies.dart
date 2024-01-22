@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 
 class FirebaseAuthServices {
   Future<void> SignUp(
-      BuildContext context, String? email, String? password) async {
+      BuildContext context, String email, String password) async {
     try {
       UserCredential user =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email!,
-        password: password!,
+        email: email,
+        password: password,
       );
       ShowSnackBarMassenger(context, AppStrings.success);
     } on FirebaseAuthException catch (e) {
@@ -25,12 +25,12 @@ class FirebaseAuthServices {
   }
 
   Future<void> SignIn(
-      BuildContext context, String? email, String? password) async {
+      BuildContext context, String email, String password) async {
     try {
       UserCredential user =
           await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email!,
-        password: password!,
+        email: email,
+        password: password,
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == AppStrings.userNF) {

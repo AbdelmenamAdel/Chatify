@@ -21,4 +21,7 @@ class AppStrings {
   static const String wrongPasswordM =
       'Wrong password provided for that user. ';
   static const String success = 'Signed Up Successfully ';
+  static const String Chatify = 'Chatify';
+  static const String messages = 'messages';
+  static const String message = 'message';
 }

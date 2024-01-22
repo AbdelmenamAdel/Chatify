@@ -17,13 +17,12 @@ dependencies:
 
 dev_dependencies:
   firebase_auth: ^4.16.0
-  firebase_storage: ^11.6.0
   cloud_firestore: ^4.14.0
-  email_auth: ^1.1.1
   get_it: ^7.6.6
   flutter_test:
     sdk: flutter
   loading_indicator: ^3.1.1
+  flutter_chat_bubble: ^2.0.2
 
 flutter_launcher_icons:
   android: true

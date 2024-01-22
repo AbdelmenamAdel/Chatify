@@ -1,7 +1,7 @@
 import 'package:chatify/app/app.dart';
 import 'package:chatify/core/bloc/bloc_observer.dart';
 import 'package:chatify/core/services/service_locator.dart';
-import 'package:chatify/features/auth/screens/cubit/auth_cubit.dart';
+import 'package:chatify/features/auth/cubit/auth_cubit.dart';
 import 'package:chatify/features/auth/firebase/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
