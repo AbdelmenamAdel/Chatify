@@ -6,9 +6,11 @@ import 'package:chatify/core/utils/strings.dart';
 class MessageModel {
   final String message;
   final String id;
-  MessageModel(this.message, this.id);
+  var date;
+  MessageModel(this.message, this.id, this.date);
 
   factory MessageModel.fromjson(jsonData) {
-    return MessageModel(jsonData[AppStrings.message], jsonData['id']);
+    return MessageModel(
+        jsonData[AppStrings.message], jsonData['id'], jsonData['CreatedAt']);
   }
 }

@@ -23,6 +23,8 @@ dev_dependencies:
     sdk: flutter
   loading_indicator: ^3.1.1
   flutter_chat_bubble: ^2.0.2
+  another_flutter_splash_screen: ^1.2.0
+  
 
 flutter_launcher_icons:
   android: true
@@ -50,3 +52,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+

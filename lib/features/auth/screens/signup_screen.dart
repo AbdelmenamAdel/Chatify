@@ -10,12 +10,16 @@ import 'package:chatify/features/auth/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference user =
+        FirebaseFirestore.instance.collection(AppStrings.messages);
+
     return Scaffold(
         body: Container(
       height: double.infinity,
@@ -31,7 +35,7 @@ class SignUpScreen extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: BlocConsumer<AuthCubit, AuthState>(listener: (context, state) {
             if (state is SignUpSuccessState) {
-              context.navigateTo(Routes.initialRoute);
+              context.navigateTo(Routes.signIn);
             }
           }, builder: (context, state) {
             AuthCubit cubit = BlocProvider.of<AuthCubit>(context);
@@ -123,6 +127,11 @@ class SignUpScreen extends StatelessWidget {
                                 cubit.emailController.text,
                                 cubit.passwordController.text,
                               );
+                              user.add({
+                                'Email': cubit.emailController.text,
+                                'Password': cubit.passwordController.text,
+                                'UserName': cubit.usernameController.text
+                              });
                             } else {}
                           },
                           height: 50.h,
@@ -142,7 +151,7 @@ class SignUpScreen extends StatelessWidget {
                       const Text(AppStrings.alrhaveAcc),
                       TextButton(
                         onPressed: () {
-                          context.navigateTo(Routes.initialRoute);
+                          context.navigateTo(Routes.signIn);
                         },
                         child: const Text(
                           AppStrings.login,

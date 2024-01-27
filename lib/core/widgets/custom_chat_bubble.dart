@@ -16,7 +16,7 @@ class CustomChatBubble extends StatelessWidget {
   Widget CustmChatBubble(
           BuildContext context, BubbleType type, MessageModel model) =>
       ChatBubble(
-        clipper: ChatBubbleClipper9(type: type),
+        clipper: ChatBubbleClipper1(type: type),
         alignment: type == BubbleType.sendBubble ? Alignment.topRight : null,
         margin: EdgeInsets.only(top: 20),
         backGroundColor: type == BubbleType.sendBubble
